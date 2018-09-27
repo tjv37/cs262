@@ -1,0 +1,15 @@
+If for some reason any apk's aren't installing correctly
+or Android Studio is trying to uninstall some, I found a solution
+that can fix it:
+
+1. File -> Settings -> Build, Execution, Deployment.
+
+2. Instant Run -> disable "Enable Instant Run to hot swap code/resource changes on deploy".
+
+3. Apply -> OK
+
+Once this setting is fixed, clean the project (Build -> Clean project)
+to get the app to run. Once it's clean, you can re-enable the
+instant run setting to get that functionality working again. Hopefully,
+you won't have to use this trick, but if the issue comes up here is
+how I managed to get around it.

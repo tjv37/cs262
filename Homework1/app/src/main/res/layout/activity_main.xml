@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/value1_label"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_marginStart="@dimen/margin_size"
+        android:layout_marginLeft="@dimen/margin_size"
+        android:layout_marginTop="@dimen/margin_size"
+        android:gravity="center"
+        android:text="@string/value_1_label_text"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/value1_input"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_marginTop="@dimen/margin_size"
+        android:layout_toEndOf="@id/value1_label"
+        android:layout_toRightOf="@id/value1_label"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="@string/value1_input_hint"
+        android:inputType="numberSigned"
+        android:textSize="@dimen/input_hint_text_size" />
+
+    <TextView
+        android:id="@+id/value2_label"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@id/value1_label"
+        android:layout_marginStart="@dimen/margin_size"
+        android:layout_marginLeft="@dimen/margin_size"
+        android:layout_marginTop="@dimen/margin_size"
+        android:gravity="center"
+        android:text="@string/value_2_label_text"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/value2_input"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@id/value1_input"
+        android:layout_marginTop="@dimen/margin_size"
+        android:layout_toEndOf="@id/value2_label"
+        android:layout_toRightOf="@id/value2_label"
+        android:ems="10"
+        android:gravity="center_vertical"
+        android:hint="@string/value2_input_hint"
+        android:inputType="numberSigned"
+        android:textSize="@dimen/input_hint_text_size" />
+
+    <TextView
+        android:id="@+id/operator_label"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@id/value2_label"
+        android:layout_marginStart="@dimen/margin_size"
+        android:layout_marginLeft="@dimen/margin_size"
+        android:layout_marginTop="@dimen/margin_size"
+        android:gravity="center"
+        android:text="@string/operator_label_text"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/operator_list"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@id/value2_input"
+        android:layout_marginStart="@dimen/margin_size"
+        android:layout_marginLeft="@dimen/margin_size"
+        android:layout_marginTop="@dimen/margin_size"
+        android:layout_toRightOf="@id/operator_label"
+        android:entries="@array/operator_list" />
+
+    <Button
+        android:id="@+id/calculate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@id/operator_label"
+        android:layout_marginStart="@dimen/margin_size"
+        android:layout_marginLeft="@dimen/margin_size"
+        android:layout_marginTop="@dimen/margin_size"
+        android:text="@string/calculate_button_text"
+        android:textSize="@dimen/button_text_size"
+        android:onClick="performCalculation"/>
+
+    <TextView
+        android:id="@+id/calculation_result"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/standard_height"
+        android:layout_below="@id/operator_list"
+        android:layout_marginStart="@dimen/margin_size"
+        android:layout_marginLeft="@dimen/margin_size"
+        android:layout_marginTop="@dimen/margin_size"
+        android:layout_toRightOf="@id/calculate_button"
+        android:gravity="center"
+        android:text="@string/calculation_result_text"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+</RelativeLayout>

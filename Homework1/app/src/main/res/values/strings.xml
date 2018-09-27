@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Homework1</string>
+    <string name="value_1_label_text">Value 1:</string>
+    <string name="value1_input_hint">Enter first value</string>
+    <string name="value_2_label_text">Value 2:</string>
+    <string name="value2_input_hint">Enter second value</string>
+    <string name="operator_label_text">Operator:</string>
+    <string name="calculate_button_text">Calculate</string>
+    <string name="calculation_result_text">Answer</string>
+    <string name="calculation_result_error">Enter values in both fields</string>
+</resources>
