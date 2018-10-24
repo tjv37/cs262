@@ -1,0 +1,25 @@
+use pubs
+go
+
+select *
+from Game
+order by time desc;
+
+
+???????????
+select *
+from Game
+where time;
+
+select *
+from Player
+where name is not null;
+
+select playerID from PlayerGame
+where score > 2000
+
+select * from Player
+where emailAddress like '%@gmail.edu'
+
+select score from PlayerGame inner join Player on PlayerGame.playerID = Player.ID
+where name = "The King"
