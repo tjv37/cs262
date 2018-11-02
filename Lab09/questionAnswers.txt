@@ -1,0 +1,32 @@
+Ty Vredeveld
+Lab09 Questions
+
+a. How many API endpoints does this application support and where are they implemented?
+	The application supports multiple endpoints. One is in hello.java as a GET method, and multiple are in the 
+	PlayerResource.java file. In that file, there are GET, PUT, POST, and DELETE methods that interact with the server database.
+
+b. PlayerResource.java
+	i. What is the Java-based technology used to access data from a database?
+		The Java-based methods for interacting with the database are HTTP GET, PUT, POST, and DELETE. These allow 
+		you to read the data and manipulate it.
+
+	ii. Compare and contrast the following:
+		1. SQL query statements vs. JDBC statement objects
+			The difference between the two is the fact that SQL query statements 
+			just interact with the database while JDBC statement objects are used to interact with Java.
+
+		2. SQL relations vs. JDBC result sets vs. List<Player>
+			List<Player> has no connections between its elements while an SQL relation is a table with multiple tuples
+			that represent rows. A JDBC result sets is like a table, but it can only look through it one row at a time. 
+ 
+	iii. Under what circumstances would the function getValueStringOrNull() be used?
+		The function would be used When you want to get a string from a table but it may not actually exist.
+		If it doesn't, it returns null, and if it does it returns the desired string in quotes.
+
+c. Player.java
+	i. What purpose does this Player DAO serve?
+		This provides an object-oriented way to represent and manipulate player "objects" from the traditional 
+		(non-object-oriented) Monopoly database.
+
+	ii. How does it compare with the Player table?
+		It is object oriented while the Player table isn't.
