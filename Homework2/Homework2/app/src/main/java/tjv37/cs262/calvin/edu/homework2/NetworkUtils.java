@@ -1,6 +1,5 @@
 package tjv37.cs262.calvin.edu.homework2;
 
-import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -10,14 +9,24 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+
+/**
+ * This class takes data from the specified URL depending on the player ID given (or not given)
+ */
 public class NetworkUtils {
 
-    private static final String Monopoly_URL =  "https://calvincs262-monopoly.appspot.com/monopoly/v1/players";
+    private static final String Monopoly_URL = "https://calvincs262-monopoly.appspot.com/monopoly/v1/players";
     private static final String Monopoly_ID_URL = "https://calvincs262-monopoly.appspot.com/monopoly/v1/player/";
 
 
     private static final String LOG_TAG = NetworkUtils.class.getSimpleName();
 
+    /**
+     * Uses a GET command to to grab data from the API and return it as a JSON string
+     *
+     * @param queryString
+     * @return playerJSONString
+     */
     static String getPlayerInfo(String queryString) {
         Log.d(LOG_TAG, queryString);
         if (queryString == "-1") {
@@ -65,7 +74,7 @@ public class NetworkUtils {
             }
             Log.d(LOG_TAG, playerJSONString);
             return playerJSONString;
-        }   else {
+        } else {
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
             String playerJSONString = null;

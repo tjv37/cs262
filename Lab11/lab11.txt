@@ -1,0 +1,13 @@
+Ty Vredeveld
+
+Changes to the code:
+- modified indiviual line comments on MainActivity.java for
+  HW1
+- class comment for MainActivity.java on HW2
+- method comments for onCreate(), onCreateOptionsMenu(), 
+  onOptionsItemSelected(), searchPlayers(), and onLoadFinished()
+  for MainActivity.java on HW2
+- class comment for NetworkUtils.java on HW2
+- method comment for getPlayerInfo() for NetworkUtils.java on HW2
+- reformatted code for HW2
+- fixed spelling errors and multiple Java issues

@@ -12,13 +12,13 @@
     <!-- Example General settings -->
     <string name="pref_header_general">General</string>
 
-    <string name="pref_title_social_recommendations">Dummy Setting</string>
-    <string name="pref_description_social_recommendations">This setting is stupid</string>
+    <string name="pref_title_social_recommendations">Setting1</string>
+    <string name="pref_description_social_recommendations">Test setting</string>
 
-    <string name="pref_title_display_name">Like, whats the point</string>
-    <string name="pref_default_display_name">Mannnnn</string>
+    <string name="pref_title_display_name">Setting2</string>
+    <string name="pref_default_display_name">Test setting</string>
 
-    <string name="pref_title_add_friends_to_messages">Of all these settings</string>
+    <string name="pref_title_add_friends_to_messages">Setting3</string>
     <string-array name="pref_example_list_titles">
         <item>Always</item>
         <item>When possible</item>

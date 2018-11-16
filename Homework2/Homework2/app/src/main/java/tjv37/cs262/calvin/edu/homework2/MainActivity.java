@@ -1,22 +1,13 @@
 package tjv37.cs262.calvin.edu.homework2;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
-import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,14 +21,26 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String>{
+/**
+ * Author: Ty Vredeveld
+ * This is the main class for the Homework2 app; it implements
+ * a number of functions that connect to an API to read players
+ * of a monopoly game and allows the user to search through them.
+ */
+
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<String> {
 
 
     private EditText mPlayerInput;
     private TextView mPlayerText;
-    private Button mButton;
 
 
+    /**
+     * This method sets up all the necessary app variables
+     * and grabs the data for the monopoly players
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,12 +48,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mPlayerInput = (EditText)findViewById(R.id.playerInput);
-        mPlayerText = (TextView)findViewById(R.id.playerText);
-        mButton = (Button)findViewById(R.id.searchButton);
+        mPlayerInput = (EditText) findViewById(R.id.playerInput);
+        mPlayerText = (TextView) findViewById(R.id.playerText);
+        Button mButton = (Button) findViewById(R.id.searchButton);
 
-        if(getSupportLoaderManager().getLoader(0)!=null){
-            getSupportLoaderManager().initLoader(0,null,this);
+        if (getSupportLoaderManager().getLoader(0) != null) {
+            getSupportLoaderManager().initLoader(0, null, this);
         }
 
         String queryString = "-1";
@@ -59,13 +62,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        if (networkInfo != null && networkInfo.isConnected() && queryString.length()!=0) {
+        if (networkInfo != null && networkInfo.isConnected() && queryString.length() != 0) {
             Bundle queryBundle = new Bundle();
             queryBundle.putString("queryString", queryString);
             getSupportLoaderManager().restartLoader(0, queryBundle, this);
-        }
-
-        else {
+        } else {
             if (queryString.length() == 0) {
                 displayToast("Please enter a search term");
             } else {
@@ -74,6 +75,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         }
     }
 
+    /**
+     * Creates the options menu
+     *
+     * @param menu
+     * @return status
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -81,6 +88,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return true;
     }
 
+    /**
+     * Returns a specific item when you select it from the options menu
+     *
+     * @param item
+     * @return item
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -103,6 +116,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Takes a player ID and sends the associated data to the PlayerLoader class
+     *
+     * @param view
+     */
     public void searchPlayers(View view) {
         String queryString = mPlayerInput.getText().toString();
         if (queryString.toString().length() == 0) {
@@ -114,19 +132,19 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     getSystemService(Context.INPUT_METHOD_SERVICE);
             inputManager.hideSoftInputFromWindow(getCurrentFocus().getApplicationWindowToken(),
                     InputMethodManager.HIDE_NOT_ALWAYS);
-        } catch (Exception e) { }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
-        if (networkInfo != null && networkInfo.isConnected() && queryString.length()!=0) {
+        if (networkInfo != null && networkInfo.isConnected() && queryString.length() != 0) {
             Bundle queryBundle = new Bundle();
             queryBundle.putString("queryString", queryString);
             getSupportLoaderManager().restartLoader(0, queryBundle, this);
-        }
-
-        else {
+        } else {
             if (queryString.length() == 0) {
                 displayToast("Please enter a search term");
             } else {
@@ -140,6 +158,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return new PlayerLoader(this, args.getString("queryString"));
     }
 
+    /**
+     * Takes data from the API and attempts to display it in the app
+     *
+     * @param loader
+     * @param data
+     */
     @Override
     public void onLoadFinished(Loader<String> loader, String data) {
         try {
@@ -174,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     } else {
                         title = title + "\n" + id + ", " + name + ", " + eMail;
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
@@ -183,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
 
             // If both are found, display the result.
-            if (title != null){
+            if (title != null) {
                 mPlayerText.setText(title);
                 mPlayerInput.setText("");
             } else {
@@ -191,7 +215,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 displayToast("No results found");
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             try {
                 JSONObject jsonObject = new JSONObject(data);
                 String info = null;
@@ -221,5 +245,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    public void onLoaderReset(Loader<String> loader) {}
+    public void onLoaderReset(Loader<String> loader) {
+    }
 }

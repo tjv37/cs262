@@ -16,7 +16,7 @@ import java.util.Locale;
  */
 public class MainActivity extends AppCompatActivity {
 
-    // create variables to hold references to certain views
+    // Create variables to hold references to certain views
     private EditText value1EditText;
     private EditText value2EditText;
     private Spinner operatorSelect;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // variables are assigned to correct views
+        // Variables are assigned to correct views
         value1EditText = findViewById(R.id.value1_input);
         value2EditText = findViewById(R.id.value2_input);
         operatorSelect = findViewById(R.id.operator_list);
@@ -45,20 +45,20 @@ public class MainActivity extends AppCompatActivity {
      * @param view
      */
     public void performCalculation(View view) {
-        // variables to hold the actual string and numerical values are assigned
+        // Variables to hold the actual string and numerical values are assigned
         String value1 = value1EditText.getText().toString();
         String value2 = value2EditText.getText().toString();
         String selectedOperator = operatorSelect.getSelectedItem().toString();
         int value1_int, value2_int;
         double answer = 0.0;
 
-        // confirms that there are entries in both EditText views before trying
+        // Confirms that there are entries in both EditText views before trying
         // to perform any calculations
         if (!value1.isEmpty() & !value2.isEmpty()) {
             value1_int = Integer.parseInt(value1);
             value2_int = Integer.parseInt(value2);
 
-            // determines the operator to use based on the spinner selection
+            // Determines the operator to use based on the spinner selection
             switch (selectedOperator) {
                 case "+":
                     answer = value1_int + value2_int;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
 
-            // when doing addition, subtraction, or multiplication no decimal places are
+            // When doing addition, subtraction, or multiplication no decimal places are
             // used since none are needed; for division, however, 3 decimal places are allowed
             // in case the answer is not an exact integer
             if (answer % 1 == 0) {
@@ -84,10 +84,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         } else {
-            // if an EditText view is missing an entry, this error is printed instead of an answer
+            // If an EditText view is missing an entry, this error is printed instead of an answer
             calculationResult.setText(getString(R.string.calculation_result_error));
         }
-        // makes sure an answer or error is displayed once the button is pressed no matter what
+        // Makes sure an answer or error is displayed once the button is pressed no matter what
         calculationResult.setVisibility(View.VISIBLE);
     }
 }
